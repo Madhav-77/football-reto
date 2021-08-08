@@ -16,8 +16,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       'username': new FormControl('', [
-        Validators.required,
-        Validators.email
+        Validators.required
       ]),
       'email': new FormControl('', [
         Validators.required,
@@ -41,7 +40,11 @@ export class RegisterComponent implements OnInit {
 
   registerUserAPI(){
     if(this.registerForm.valid){
-      this.authService.registerUser(this.registerForm.value)
+      this.authService.registerUser(this.registerForm.value).subscribe(data => {
+        console.log(data);
+      }, (err) => {
+        console.log(err);
+      });
     } else {
       //show error msg
     }
