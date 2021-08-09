@@ -27,8 +27,13 @@ export class LoginComponent implements OnInit {
   }
 
   loginUserAPI(){
+    //console.log(this.loginForm.value);
     if(this.loginForm.valid){
-      this.authService.loginUser(this.loginForm.value)
+      this.authService.loginUser(this.loginForm.value).subscribe(data => {
+        console.log(data);
+      }, (err) => {
+        console.log(err);
+      });
     } else {
       //show error msg
     }

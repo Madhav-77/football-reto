@@ -10,7 +10,12 @@ export class AuthServiceService {
   constructor(private httpClient: HttpClient) { }
 
   loginUser(loginFormObj: any){
-    console.log(loginFormObj)
+    let requestData = {
+      "identifier": loginFormObj.username,
+      "password": loginFormObj.password
+    }
+    return this.httpClient.post(this.baseUrl, requestData);
+    //console.log(loginFormObj)
   }
   
   registerUser(registerFormObj: any){
