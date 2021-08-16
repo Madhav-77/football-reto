@@ -25,39 +25,46 @@ export class ChallengeListComponent implements OnInit {
     })
 
     // TODO: make call to user.me Here if token is present.
-    // if (localStorage.getItem("jwt_token_key")) {
-    //   this.authService.getUserData().subscribe(user => {
-    //     this.user = user;
-    //   },
-    //     err => {
-    //       console.log(`Error in getUserData: `);
-    //       console.log(err);
-    //     })
-    // }
+    if (localStorage.getItem("JWT_TOKEN")) {
+      console.log("has jwt")
+      this.authService.getUserData().subscribe(user => {
+        this.user = user;
+        console.log("User details are ===>", this.user)
+      },
+        err => {
+          console.log(`Error in getUserData: `);
+          console.log(err);
+        })
+    }
 
- 
+
 
   }
 
 
   acceptChallenge(challengeId: string): void {
+    console.log("this user ===>", this.user);
 
     if (this.user) {
+
       let request = {
         "acceptor": this.user.team
       }
       this.challengeService.acceptChallenge(challengeId, request)
-      .subscribe(data => {
-        console.log("Data for challenge created===>", data);
-      },
-      err => {
-        console.log("Error in createChallenge: ", err)
-      })
+        .subscribe(data => {
+          console.log("Data for challenge created===>", data);
+        },
+          err => {
+            console.log("Error in createChallenge: ", err)
+          })
     }
-
-
-    this.router.navigate(['login'])
-
-
+    else {
+      this.router.navigate(['login'])
+    }
   }
+
+  editChallenge(challengeId: string): void {
+    console.log("edit challenge clicked ===>", challengeId);
+  }
+
 }

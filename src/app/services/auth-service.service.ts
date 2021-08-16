@@ -25,16 +25,16 @@ export class AuthServiceService {
 
   // TODO: check implementation
   getUserData() {
-    const jwtToken = localStorage.getItem("<jwt_token_key>");
+    // const jwtToken = localStorage.getItem("<jwt_token_key>");
 
-    const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json',
-          // 'Authorization': `Bearer ${jwtToken}`
-          'Authorization': `Bearer ${jwtToken}`
-        }),
-      };
-      return this.httpClient.get(this.baseUrl + "/users/me", httpOptions);
+    // const httpOptions = {
+    //     headers: new HttpHeaders({
+    //       'Content-Type':  'application/json',
+    //       // 'Authorization': `Bearer ${jwtToken}`
+    //       'Authorization': `Bearer ${jwtToken}`
+    //     }),
+    //   };
+      return this.httpClient.get(this.baseUrl + "/users/me");
   }
 
   logoutUser() {

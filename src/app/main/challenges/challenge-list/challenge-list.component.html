@@ -1,41 +1,42 @@
-
-
 <div>
-    <div>
-        <p> Filter section here </p>
-    </div>
-    <div>
-        <p>qwdqwdqwd</p>
-    </div>
-    <div *ngIf="challenges">
-        <p>In Challenges</p>
-        <div *ngFor="let challenge of challenges; index as i">
-            <!-- <p>{{challenge._id}}</p> -->
-            <p>------------------------------</p>
-            <p>Team: {{challenge.creator?.name}}</p>
-            <p>Points: {{challenge.creator?.points}}</p>
-            <p>Date: {{challenge.match_date}}</p>
-            <p>Start Time: {{challenge.start_time}}</p>
-            <p>End Time: {{challenge.end_time}}</p>
-            <p>Ground Name: {{challenge.ground?.name}}</p>
-            <p>Ground Location: {{challenge.ground?.location}}</p>
+  <div>
+    <p>Filter section here</p>
+  </div>
+  <div *ngIf="challenges">
+    <p>In Challenges</p>
+    <div *ngFor="let challenge of challenges; index as i">
+      <!-- <p>{{challenge._id}}</p> -->
+      <p>------------------------------</p>
+      <p>Team: {{ challenge.creator?.name }}</p>
+      <p>Points: {{ challenge.creator?.points }}</p>
+      <p>Date: {{ challenge.match_date }}</p>
+      <p>Start Time: {{ challenge.start_time }}</p>
+      <p>End Time: {{ challenge.end_time }}</p>
+      <p>Ground Name: {{ challenge.ground?.name }}</p>
+      <p>Ground Location: {{ challenge.ground?.location }}</p>
 
-            <br>
-            <div *ngIf="!challenge.acceptor" style="display: flex; flex-direction: row;">
-                <!-- TODO: Get user Call and  check for Team-->
-                <div *ngIf="user">
-                    <button *ngIf="user.team.id === challenge.creator.id">Edit</button>
-                </div>
-                <!-- TODO: Get user Call and  -->
-                <button (click)="acceptChallenge(challenge._id)">Accept</button>
-            </div>
-            <div *ngIf="challenge.acceptor">
-                <p> V/s </p>
-                <p>Team: {{challenge.creator?.name}}</p>
-                <p>Points: {{challenge.creator?.points}}</p>
-                </div>
-            <p>------------------------------</p>
+      <br />
+      <div
+       *ngIf="user && !challenge.acceptor"
+        style="display: flex; flex-direction: row"
+      >
+        <div  *ngIf="user.team == challenge.creator.id">
+          <button (click)="editChallenge(challenge.id)">Edit</button>
         </div>
+      
+        <button
+          *ngIf="user.team !== challenge.creator.id"
+          (click)="acceptChallenge(challenge._id)"
+        >
+          Accept
+        </button>
+      </div>
+      <div *ngIf="challenge.acceptor">
+        <p>V/s</p>
+        <p>Team: {{ challenge.acceptor?.name }}</p>
+        <p>Points: {{ challenge.acceptor?.points }}</p>
+      </div>
+      <p>------------------------------</p>
     </div>
-
+  </div>
 </div>
