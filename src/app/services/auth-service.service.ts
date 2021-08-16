@@ -14,12 +14,17 @@ export class AuthServiceService {
       "identifier": loginFormObj.username,
       "password": loginFormObj.password
     }
-    return this.httpClient.post(this.baseUrl, requestData);
+    return this.httpClient.post<any>(this.baseUrl, requestData);
     //console.log(loginFormObj)
   }
   
   registerUser(registerFormObj: any){
-    return this.httpClient.post(this.baseUrl + "/register", registerFormObj);
+    return this.httpClient.post<any>(this.baseUrl + "/register", registerFormObj);
     //console.log(registerFormObj)
+  }
+
+  logoutUser() {
+    localStorage.removeItem("JWT_TOKEN");
+    localStorage.removeItem("EXP_STAMP");
   }
 }
