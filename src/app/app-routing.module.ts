@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChallengeListComponent } from './main/challenges/challenge-list/challenge-list.component';
 
-const routes: Routes = [{ path: 'true', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) }];
+const routes: Routes = [{ path: 'true', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+{ path: "", component: ChallengeListComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

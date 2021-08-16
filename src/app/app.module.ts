@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ChallengeListComponent } from './main/challenges/challenge-list/challenge-list.component';
 @NgModule({
   declarations: [
     AppComponent,
+    ChallengeListComponent,
   ],
   imports: [
     BrowserModule,
