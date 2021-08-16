@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
@@ -10,8 +12,9 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class LoginComponent implements OnInit {
 
   loginForm! : FormGroup;
-  
-  constructor(private formBuilder: FormBuilder, private authService: AuthServiceService) { }
+  jwtHelper = new JwtHelperService();
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -27,10 +30,11 @@ export class LoginComponent implements OnInit {
   }
 
   loginUserAPI(){
-    //console.log(this.loginForm.value);
     if(this.loginForm.valid){
-      this.authService.loginUser(this.loginForm.value).subscribe(data => {
-        console.log(data);
+      this.authService.loginUser(this.loginForm.value).subscribe((data: any) => {
+        localStorage.setItem("JWT_TOKEN", data.jwt);
+        localStorage.setItem("EXP_STAMP", this.jwtHelper.decodeToken(data.jwt).exp);
+        this.router.navigateByUrl('/dashboard');
       }, (err) => {
         console.log(err);
       });

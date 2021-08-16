@@ -1,3 +1,4 @@
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,6 +12,7 @@ import { ChallengeListComponent } from './main/challenges/challenge-list/challen
   declarations: [
     AppComponent,
     ChallengeListComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

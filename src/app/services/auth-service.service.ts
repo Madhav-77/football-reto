@@ -34,8 +34,11 @@ export class AuthServiceService {
           'Authorization': `Bearer ${jwtToken}`
         }),
       };
-
-
       return this.httpClient.get(this.baseUrl + "/users/me", httpOptions);
+  }
+
+  logoutUser() {
+    localStorage.removeItem("JWT_TOKEN");
+    localStorage.removeItem("EXP_STAMP");
   }
 }
