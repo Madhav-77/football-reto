@@ -53,6 +53,8 @@ export class ChallengeListComponent implements OnInit {
       this.challengeService.acceptChallenge(challengeId, request)
         .subscribe(data => {
           console.log("Data for challenge created===>", data);
+          // TODO:
+          // 1. find in list of challenges and change the node so it is updated on the UI.
         },
           err => {
             console.log("Error in createChallenge: ", err)
