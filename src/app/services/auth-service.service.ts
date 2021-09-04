@@ -27,4 +27,12 @@ export class AuthServiceService {
     localStorage.removeItem("JWT_TOKEN");
     localStorage.removeItem("EXP_STAMP");
   }
+
+  isUserLoggedIn() {
+    if(localStorage.getItem("JWT_TOKEN")) {
+      return true
+    } else {
+      return false;
+    }
+  }
 }
