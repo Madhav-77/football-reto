@@ -1,0 +1,17 @@
+<div id="reto-header">
+  <div class="logo">
+    <p>Reto</p>
+  </div>
+  <div *ngIf="!currentUser" class="nav-btns">
+    <a routerLink="/" routerActiveLink="active"> Challenges </a>
+    <a routerLink="/login"> SignIn </a>
+    <a routerLink="/register">Register </a>
+  </div>
+  <div *ngIf="currentUser" class="nav-btns">
+    <a routerLink="/" routerActiveLink="active"> CHALLENGES</a>
+    <a routerLink="/team" > TEAM </a>
+    <a routerLink="/leaderboard"> LEADERBOARD </a>
+    <a routerLink="/settings"> SETTINGS </a>
+    <a (click)="logout()"> Logout </a>
+  </div>
+</div>

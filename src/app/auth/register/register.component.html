@@ -1,15 +1,17 @@
 <div>
     <h3>Register</h3><br>
-    <b>Username</b>
-    <input type="text" class="username"><br>
-    <b>Email</b>
-    <input type="email" class="email"><br>
-    <b>Contact No.</b>
-    <input type="tel" class="contact"><br>
-    <b>Password</b>
-    <input type="password" class="password"><br>
-    <b>Confirm Password</b>
-    <input type="password" class="c-password"><br>
-    <button class="register">Register</button><br>
+    <form action="" [formGroup]="registerForm">
+        <label>Username</label>
+        <input formControlName="username" type="text" class="username"><br>
+        <label>Email</label>
+        <input formControlName="email" type="email" class="email"><br>
+        <label>Contact No.</label>
+        <input formControlName="phone" type="tel" class="contact"><br>
+        <label>Password</label>
+        <input formControlName="password" type="password" class="password"><br>
+        <label>Confirm Password</label>
+        <input formControlName="cPassword" type="password" class="c-password"><br>
+        <button (click)="registerUserAPI()" [disabled]="!registerForm.valid" class="register">Register</button><br>
+    </form>
     <a [routerLink]="['']" class="login-page">Already Registered</a>
 </div>

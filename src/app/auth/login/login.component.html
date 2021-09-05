@@ -1,9 +1,12 @@
 <div>
     <h3>Login</h3><br>
-    <b>Username</b>
-    <input type="text" class="username"><br>
-    <b>Password</b>
-    <input type="password" class="password"><br>
-    <button class="login">Login</button><br>
+    <form action="" [formGroup]="loginForm">
+        <label>Username</label>
+        <input type="text" class="username" formControlName="username"><br>
+        <!--<small *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').touched">Username is required</small> -->
+        <label>Password</label>
+        <input type="password" class="password" formControlName="password"><br>
+        <button (click)="loginUserAPI()" [disabled]="!loginForm.valid" class="login">Login</button><br>
+    </form>
     <a class="register-page" [routerLink]="['register']">New member?</a>
 </div>
