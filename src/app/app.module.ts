@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChallengeListComponent } from './main/challenges/challenge-list/challenge-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CreateChallengeComponent } from './main/challenges/create-challenge/create-challenge.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { FooterComponent } from './components/footer/footer.component';
     DashboardComponent,
     HeaderComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    CreateChallengeComponent
   ],
   imports: [
     BrowserModule,

@@ -69,4 +69,16 @@ export class ChallengeListComponent implements OnInit {
     console.log("edit challenge clicked ===>", challengeId);
   }
 
+
+  redirectToCreateChallenge(){
+    console.log("in reredirectToCreateChallenge");
+    if(!localStorage.getItem("JWT_TOKEN")){
+      this.router.navigateByUrl("login")
+    }
+    if(!this.user?.team){
+      this.router.navigateByUrl("create-team")
+    }
+    this.router.navigateByUrl("create-challenge")
+  }
+
 }

@@ -2,8 +2,7 @@
   <div>
     <p>Filter section here</p>
   </div>
-  <div *ngIf="challenges">
-    <p>In Challenges</p>
+  <div *ngIf="challenges?.length > 0">
     <div *ngFor="let challenge of challenges; index as i">
       <!-- <p>{{challenge._id}}</p> -->
       <p>------------------------------</p>
@@ -38,5 +37,14 @@
       </div>
       <p>------------------------------</p>
     </div>
+  </div>
+
+  <div *ngIf="challenges?.length == 0">
+    <p>No Challenges Found</p>
+    <a>Feel free to create a challenge</a>
+  </div>
+
+  <div class="fab-btn">
+    <button (click)="redirectToCreateChallenge()">Create Challenge</button>
   </div>
 </div>
