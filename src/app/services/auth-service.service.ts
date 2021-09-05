@@ -68,4 +68,12 @@ export class AuthServiceService {
     localStorage.removeItem("EXP_STAMP");
     this.isAuthenticated$.next(false);
   }
+
+  isUserLoggedIn() {
+    if(localStorage.getItem("JWT_TOKEN")) {
+      return true
+    } else {
+      return false;
+    }
+  }
 }
