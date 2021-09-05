@@ -1,0 +1,50 @@
+<div>
+  <div>
+    <p>Filter section here</p>
+  </div>
+  <div *ngIf="challenges?.length > 0">
+    <div *ngFor="let challenge of challenges; index as i">
+      <!-- <p>{{challenge._id}}</p> -->
+      <p>------------------------------</p>
+      <p>Team: {{ challenge.creator?.name }}</p>
+      <p>Points: {{ challenge.creator?.points }}</p>
+      <p>Date: {{ challenge.match_date }}</p>
+      <p>Start Time: {{ challenge.start_time }}</p>
+      <p>End Time: {{ challenge.end_time }}</p>
+      <p>Ground Name: {{ challenge.ground?.name }}</p>
+      <p>Ground Location: {{ challenge.ground?.location }}</p>
+
+      <br />
+      <div
+       *ngIf="user && !challenge.acceptor"
+        style="display: flex; flex-direction: row"
+      >
+        <div  *ngIf="user.team == challenge.creator.id">
+          <button (click)="editChallenge(challenge.id)">Edit</button>
+        </div>
+      
+        <button
+          *ngIf="user.team !== challenge.creator.id"
+          (click)="acceptChallenge(challenge._id)"
+        >
+          Accept
+        </button>
+      </div>
+      <div *ngIf="challenge.acceptor">
+        <p>V/s</p>
+        <p>Team: {{ challenge.acceptor?.name }}</p>
+        <p>Points: {{ challenge.acceptor?.points }}</p>
+      </div>
+      <p>------------------------------</p>
+    </div>
+  </div>
+
+  <div *ngIf="challenges?.length == 0">
+    <p>No Challenges Found</p>
+    <a>Feel free to create a challenge</a>
+  </div>
+
+  <div class="fab-btn">
+    <button (click)="redirectToCreateChallenge()">Create Challenge</button>
+  </div>
+</div>

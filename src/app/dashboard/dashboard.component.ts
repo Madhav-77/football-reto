@@ -12,7 +12,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private authService: AuthServiceService, 
-    private router: Router,
     private groundService: GroundsService
   ) { }
 
@@ -29,8 +28,4 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  logout(){
-    this.authService.logoutUser();
-    this.router.navigateByUrl('/');
-  }
 }

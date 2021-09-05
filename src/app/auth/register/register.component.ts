@@ -43,7 +43,8 @@ export class RegisterComponent implements OnInit {
 
   registerUserAPI(){
     if(this.registerForm.valid){
-      this.authService.registerUser(this.registerForm.value).subscribe(data => {
+      this.authService.registerUser(this.registerForm.value).subscribe((data: any)=> {
+        
         localStorage.setItem("JWT_TOKEN", data.jwt);
         localStorage.setItem("EXP_STAMP", this.jwtHelper.decodeToken(data.jwt).exp);
         this.router.navigateByUrl('/dashboard');
