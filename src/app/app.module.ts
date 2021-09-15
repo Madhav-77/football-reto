@@ -11,6 +11,9 @@ import { ChallengeListComponent } from './main/challenges/challenge-list/challen
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CreateChallengeComponent } from './main/challenges/create-challenge/create-challenge.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TeamListComponent } from './main/teams/team-list/team-list.component';
+import { JoinTeamComponent } from './main/teams/join-team/join-team.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,13 +22,17 @@ import { CreateChallengeComponent } from './main/challenges/create-challenge/cre
     HeaderComponent,
     FooterComponent,
     HeaderComponent,
-    CreateChallengeComponent
+    CreateChallengeComponent,
+    TeamListComponent,
+    JoinTeamComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
