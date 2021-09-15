@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChallengeListComponent } from './main/challenges/challenge-list/challenge-list.component';
 import { CreateChallengeComponent } from './main/challenges/create-challenge/create-challenge.component';
 import { AuthGuardGuard } from './route-gaurds/auth-guard.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: 'true', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  {path: "dashboard", component: DashboardComponent, canActivate: [AuthGuardGuard] },
+  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuardGuard] },
   { path: "", component: ChallengeListComponent },
-  { path: "create-challenge", component: CreateChallengeComponent }
+  { path: "create-challenge", component: CreateChallengeComponent },
+  { path: "**", component: PageNotFoundComponent }
 ];
 
 @NgModule({

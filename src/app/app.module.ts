@@ -11,6 +11,7 @@ import { ChallengeListComponent } from './main/challenges/challenge-list/challen
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CreateChallengeComponent } from './main/challenges/create-challenge/create-challenge.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { CreateChallengeComponent } from './main/challenges/create-challenge/cre
     HeaderComponent,
     FooterComponent,
     HeaderComponent,
-    CreateChallengeComponent
+    CreateChallengeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
