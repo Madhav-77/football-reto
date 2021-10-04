@@ -1,9 +1,47 @@
 <div>
+  <div *ngIf="errToasts">
+    <p style="color: red">{{ errToasts }}</p>
+  </div>
   <div>
-    <p>Filter section here</p>
+    <p>Filter:</p>
+    <div>
+      <label>
+        Select Date:
+        <input
+          id="match_date"
+          type="date"
+          [(ngModel)]="challengeDate"
+          (change)="onFilterDate()"
+        />
+      </label>
+    </div>
+    <div>
+      <label for="start_time">Start Time: </label>
+      <select
+        id="start_time"
+        [(ngModel)]="filter_start_time"
+        (change)="onFilterStartTime()"
+      >
+        <option></option>
+        <option *ngFor="let timeSlot of timeSlots" value="{{ timeSlot }}">
+          {{ timeSlot }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label>
+        Location:
+        <input
+          id="location"
+          type="text"
+          [(ngModel)]="filter_challenge_location"
+          (change)="onFilterLocation()"
+        />
+      </label>
+    </div>
   </div>
   <div *ngIf="challenges?.length > 0">
-    <div *ngFor="let challenge of challenges; index as i">
+    <div *ngFor="let challenge of challengeList; index as i">
       <!-- <p>{{challenge._id}}</p> -->
       <p>------------------------------</p>
       <p>Team: {{ challenge.creator?.name }}</p>
@@ -16,13 +54,13 @@
 
       <br />
       <div
-       *ngIf="user && !challenge.acceptor"
+        *ngIf="user && !challenge.acceptor"
         style="display: flex; flex-direction: row"
       >
-        <div  *ngIf="user.team == challenge.creator.id">
-          <button (click)="editChallenge(challenge.id)">Edit</button>
+        <div *ngIf="user.team == challenge.creator.id">
+          <button (click)="editChallenge(challenge)">Edit</button>
         </div>
-      
+
         <button
           *ngIf="user.team !== challenge.creator.id"
           (click)="acceptChallenge(challenge._id)"

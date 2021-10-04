@@ -151,4 +151,6 @@ export class CreateChallengeComponent implements OnInit {
       console.log("error that for is incomplete")
     }
   }
+
+ 
 }

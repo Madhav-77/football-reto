@@ -21,13 +21,9 @@ export class ChallengeServiceService {
   baseUrl = "https://reto-football.herokuapp.com";
   constructor(private httpClient: HttpClient) { }
 
-  getAllChallenges() {
-    // 1. create Date ahead of today
-    let today = moment().format('YYYY-MM-DD');
-    // TODO:
-    // 2. add query params match_date_gte= 1.(date)
-    let params = new HttpParams().set('match_date_gte', today);
+  getAllChallenges(challengeDate: any) {
 
+    let params = new HttpParams().set('match_date_gte', challengeDate);
     // 3. Return Response and populate the page.   
     return this.httpClient.get(this.baseUrl + "/challenges", { params: params });
   }
