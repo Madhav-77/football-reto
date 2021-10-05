@@ -4,8 +4,8 @@
   </div>
   <div *ngIf="!currentUser" class="nav-btns">
     <a routerLink="/" routerActiveLink="active"> Challenges </a>
-    <a routerLink="/login"> SignIn </a>
-    <a routerLink="/register">Register </a>
+    <a routerLink="auth/login"> SignIn </a>
+    <a routerLink="auth/register">Register </a>
   </div>
   <div *ngIf="currentUser" class="nav-btns">
     <a routerLink="/" routerActiveLink="active"> CHALLENGES</a>

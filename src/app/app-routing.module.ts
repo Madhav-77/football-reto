@@ -7,7 +7,7 @@ import { AuthGuardGuard } from './route-gaurds/auth-guard.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: 'true', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   { path: "dashboard", component: DashboardComponent },
   { path: "", component: ChallengeListComponent },
   { path: "create-challenge", component: CreateChallengeComponent },
