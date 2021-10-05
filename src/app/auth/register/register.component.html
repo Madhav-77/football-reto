@@ -13,5 +13,5 @@
         <input formControlName="cPassword" type="password" class="c-password"><br>
         <button (click)="registerUserAPI()" [disabled]="!registerForm.valid" class="register">Register</button><br>
     </form>
-    <a [routerLink]="['']" class="login-page">Already Registered</a>
+    <a [routerLink]="['/auth/login']" class="login-page">Already Registered</a>
 </div>

@@ -8,5 +8,5 @@
         <input type="password" class="password" formControlName="password"><br>
         <button (click)="loginUserAPI()" [disabled]="!loginForm.valid" class="login">Login</button><br>
     </form>
-    <a class="register-page" [routerLink]="['register']">New member?</a>
+    <a class="register-page" [routerLink]="['/auth/register']">New member?</a>
 </div>
