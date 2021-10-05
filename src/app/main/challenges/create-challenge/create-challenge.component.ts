@@ -1,3 +1,4 @@
+import { Constants } from './../../../utils/Constants';
 import { ChallengeServiceService } from './../../../services/challenge-service.service';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -32,26 +33,7 @@ export class CreateChallengeComponent implements OnInit {
   closedSlots: any = [];
   selectedGround: any;
   bookingTime: any = [];
-  allTimeSlots = [
-    '05:00 - 06:00',
-    '06:00 - 07:00',
-    '07:00 - 08:00',
-    '08:00 - 09:00',
-    '09:00 - 10:00',
-    '10:00 - 11:00',
-    '11:00- 12:00 ',
-    '12:00 - 13:00 ',
-    '13:00 - 14:00 ',
-    '14:00 - 15:00 ',
-    '15:00 - 16:00 ',
-    '16:00 - 17:00 ',
-    '17:00 - 18:00 ',
-    '18:00 - 19:00 ',
-    '19:00 - 20:00 ',
-    '20:00 - 21:00 ',
-    '21:00 - 22:00 ',
-    '22:00 - 11:00 ',
-  ];
+  allTimeSlots = Constants.timeSlots;
 
   constructor(private router: Router, groundService: GroundsService, private authService: AuthServiceService, private challengeService: ChallengeServiceService) {
     authService.getUserData().subscribe(
@@ -169,4 +151,6 @@ export class CreateChallengeComponent implements OnInit {
       console.log("error that for is incomplete")
     }
   }
+
+ 
 }

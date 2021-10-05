@@ -24,7 +24,7 @@ import { JoinTeamComponent } from './main/teams/join-team/join-team.component';
     FooterComponent,
     HeaderComponent,
     CreateChallengeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
     TeamListComponent,
     JoinTeamComponent
   ],
