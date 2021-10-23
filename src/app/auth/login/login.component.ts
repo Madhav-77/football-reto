@@ -34,7 +34,15 @@ export class LoginComponent implements OnInit {
       this.authService.loginUser(this.loginForm.value).subscribe((data: any) => {
         localStorage.setItem("JWT_TOKEN", data.jwt);
         localStorage.setItem("EXP_STAMP", this.jwtHelper.decodeToken(data.jwt).exp);
-        this.router.navigateByUrl('/dashboard');
+        console.log(data)
+        if(data.user.role.type == "player")
+          if(data.user.team){
+            this.router.navigateByUrl('/');
+          } else {
+            this.router.navigateByUrl('/team');
+          }
+        else 
+          this.router.navigateByUrl('/dashboard');
       }, (err) => {
         console.log(err);
       });

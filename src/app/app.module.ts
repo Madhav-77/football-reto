@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamListComponent } from './main/teams/team-list/team-list.component';
 import { JoinTeamComponent } from './main/teams/join-team/join-team.component';
+import { CreateTeamComponent } from './main/teams/create-team/create-team.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { JoinTeamComponent } from './main/teams/join-team/join-team.component';
     CreateChallengeComponent,
     PageNotFoundComponent,
     TeamListComponent,
-    JoinTeamComponent
+    JoinTeamComponent,
+    CreateTeamComponent
   ],
   imports: [
     BrowserModule,
