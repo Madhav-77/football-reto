@@ -29,21 +29,14 @@ export class ChallengeServiceService {
   }
 
 
+  // TODO: point this to update challenge.
   acceptChallenge(challengeId: string, req: any) {
+    return this.httpClient.put(Constants.domain + Constants.challenge_endpoint + challengeId, req);
 
-    // TODO:
-    // 1. change jwtKey
-    const jwtToken = localStorage.getItem("<jwt_token_key>");
+  }
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        // 'Authorization': `Bearer ${jwtToken}`
-        'Authorization': `Bearer ${jwtToken}`
-      }),
-    };
-    return this.httpClient.put(this.baseUrl + "/challenges/" + challengeId, req, httpOptions);
-
+  updateChallenge(challengeId: string, req: any) {
+    return this.httpClient.put(Constants.domain + Constants.challenge_endpoint + '/' + challengeId, req)
   }
 
   createChallenge(createChallengeObj: createChallenge) {
@@ -51,4 +44,14 @@ export class ChallengeServiceService {
     console.log("Challenge Service Called", createChallengeObj)
     return this.httpClient.post(Constants.domain + Constants.challenge_endpoint, createChallengeObj);
   }
+
+  getChallengeById(challengeId: string) {
+    return this.httpClient.get(Constants.domain + Constants.challenge_endpoint + "/" + challengeId);
+  }
+
+  deleteChallenge(challengeId: string) {
+    return this.httpClient.delete(Constants.domain + Constants.challenge_endpoint + "/" + challengeId);
+  }
+
+
 }

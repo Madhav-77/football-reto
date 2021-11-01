@@ -9,7 +9,9 @@
         Select Date:
         <input
           id="match_date"
+          name="match_date"
           type="date"
+          min="{{today}}"
           [(ngModel)]="challengeDate"
           (change)="onFilterDate()"
         />
@@ -54,12 +56,17 @@
 
       <br />
       <div
-        *ngIf="user && !challenge.acceptor"
+        *ngIf="user && !challenge.acceptor && challenges?.length > 0"
         style="display: flex; flex-direction: row"
       >
-        <div *ngIf="user.team == challenge.creator.id">
-          <button (click)="editChallenge(challenge)">Edit</button>
-        </div>
+        <!-- <div *ngIf="user.team == challenge.creator._id">
+          <button (click)="editChallenge(challenge._id)">Edit</button>
+        </div> -->
+
+        <!-- TODO: Add a Pop-up to check if challenge is really to be deleted -->
+        <div *ngIf="user.team == challenge.creator._id">
+          <button (click)="deleteChallenge(challenge._id)">DELETE CHALLENGE</button>
+        </div> 
 
         <button
           *ngIf="user.team !== challenge.creator.id"
