@@ -20,6 +20,7 @@ export class ChallengeListComponent implements OnInit {
   filter_challenge_location = "";
 
   challengeDate = moment().format('YYYY-MM-DD');
+  today = moment().format('YYYY-MM-DD');
   errToasts: string = "";
 
 
@@ -72,7 +73,8 @@ export class ChallengeListComponent implements OnInit {
   }
 
   editChallenge(challengeId: string): void {
-    console.log("edit challenge clicked ===>", challengeId);
+    console.log("ID ==> ", challengeId);
+    this.router.navigate(['/create-challenge'], { queryParams: { challenge: challengeId } });
   }
 
 
@@ -82,9 +84,11 @@ export class ChallengeListComponent implements OnInit {
       this.router.navigateByUrl("login")
     }
     if (!this.user?.team) {
-      this.router.navigateByUrl("create-team")
+      this.router.navigateByUrl("team")
     }
-    this.router.navigateByUrl("create-challenge")
+    else {
+      this.router.navigateByUrl("create-challenge")
+    }
   }
 
 
@@ -160,6 +164,20 @@ export class ChallengeListComponent implements OnInit {
       this.challengeList = this.challenges;
     }
 
+  }
+
+  deleteChallenge(challengeId: string) {
+
+    this.challengeService.deleteChallenge(challengeId).subscribe((data: any) => {
+      console.log("Deleted Challenge Response =>", data);
+      let deletedChallengeIndex = this.challengeList.findIndex((challenge: any) => challenge.id === data.id)
+      console.log("deletedChallengeIndex ===>", deletedChallengeIndex)
+      this.challengeList.splice(deletedChallengeIndex, 1)
+      console.log("Challenge List ==>", this.challengeList)
+    },
+      err => {
+        console.log("Error During Delete Challenge", err);
+      })
   }
 
 }

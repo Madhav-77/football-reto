@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  registerUserAPI(){
+  registerUserAPI() {
     if(this.registerForm.valid){
       this.authService.registerUser(this.registerForm.value).subscribe((data: any)=> {
         

@@ -1,0 +1,9 @@
+<div>
+    <form action="" [formGroup]="createTeam">
+        <label>Team Name </label>
+        <input type="text" class="teamName" formControlName="teamName"><br><br>
+        <!--<small *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').touched">Username is required</small> -->
+        <button (click)="createTeamAPI()" [disabled]="!createTeam.valid" class="createTeam">Create Team</button><br>
+    </form>
+    <button [routerLink]="['/team']">Join Team</button>
+</div>
