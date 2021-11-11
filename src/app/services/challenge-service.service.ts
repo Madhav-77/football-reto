@@ -54,4 +54,12 @@ export class ChallengeServiceService {
   }
 
 
+  getChallengesByCreatorId(id: string) {
+    return (this.httpClient.get(Constants.domain + Constants.challenge_endpoint + `?creator._id=${id}`));
+  }
+
+  getChallengesByAcceptorId(id: string) {
+    return this.httpClient.get(Constants.domain + Constants.challenge_endpoint + `?acceptor._id=${id}`);
+  }
+
 }
