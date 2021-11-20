@@ -1,0 +1,78 @@
+<div *ngIf="ground">
+  <div>
+    <p>Ground Name: {{ ground.name }}</p>
+    <p>Manager: {{ ground.owner.username }}</p>
+    <p>
+      Total Matches:
+      {{ ground.challenges.length + ground.ground_bookings.length }}
+    </p>
+  </div>
+  <div>
+    <button>Add Booking</button>
+  </div>
+
+  <div style="display: flex">
+    <button (click)="changeDate('previous')">&#9001;</button>
+    <p>{{ selected_date }}</p>
+    <button (click)="changeDate('next')">></button>
+  </div>
+
+  <div *ngIf="booking_details.length > 0">
+    <div
+      style="display: flex; margin: 4px; justify-content: space-evenly"
+      *ngFor="let booking_detail of booking_details; index as i"
+    >
+      <p>{{ booking_detail.time }}</p>
+
+      <p *ngIf="booking_detail.acceptor && booking_detail.creator">
+        {{ booking_detail.acceptor.name }} V/S {{ booking_detail.creator.name }}
+      </p>
+
+      <button
+        (click)="add_ground_booking(booking_detail.time)"
+        *ngIf="!booking_detail.winner && !booking_detail.ground"
+      >
+        Book
+      </button>
+
+      <button
+        (click)="remove_ground_booking(booking_detail)"
+        *ngIf="
+          booking_detail.ground &&
+          (!booking_detail.creator || !booking_detail.acceptor)
+        "
+      >
+        Booked
+      </button>
+
+      <button
+        *ngIf="
+          booking_detail.ground &&
+          booking_detail.creator &&
+          booking_detail.acceptor &&
+          !booking_detail.winner
+        "
+      >
+        Score Match
+      </button>
+      <p
+        *ngIf="
+          booking_detail.ground &&
+          booking_detail.creator &&
+          booking_detail.acceptor &&
+          booking_detail.winner
+        "
+      >
+        {{ booking_detail.winner }}
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="booking_details.length == 0">
+    <p>Loading ...</p>
+  </div>
+</div>
+
+<div *ngIf="!ground">
+  <p>Loading...</p>
+</div>

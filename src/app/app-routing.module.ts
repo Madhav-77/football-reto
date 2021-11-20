@@ -1,4 +1,6 @@
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatchPaymentComponent } from './main/ground/match-payment/match-payment.component';
+import { MatchScoringComponent } from './main/ground/match-scoring/match-scoring.component';
+import { GroundDashboardComponent } from './main/ground/ground-dashboard/ground-dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChallengeListComponent } from './main/challenges/challenge-list/challenge-list.component';
@@ -12,13 +14,15 @@ import { MyTeamComponent } from './main/teams/my-team/my-team.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: "dashboard", component: DashboardComponent },
-  { path: "", component: ChallengeListComponent },
   { path: "team", component: JoinTeamComponent },
   { path: "team/:id", component: MyTeamComponent },
+  { path: "", component: ChallengeListComponent },
   { path: "team/create-team", component: CreateTeamComponent },
   { path: "create-challenge", component: CreateChallengeComponent },
   { path: "leaderboard", component: LeaderbaordComponent },
+  { path: "ground-dashboard", component: GroundDashboardComponent },
+  { path: "match-scoring", component: MatchScoringComponent },
+  { path: "match-payment", component: MatchPaymentComponent },
   { path: "**", component: PageNotFoundComponent },
 ];
 
