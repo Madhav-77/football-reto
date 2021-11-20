@@ -1,4 +1,4 @@
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { LeaderbaordComponent } from './main/teams/leaderbaord/leaderbaord.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -16,11 +16,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamListComponent } from './main/teams/team-list/team-list.component';
 import { JoinTeamComponent } from './main/teams/join-team/join-team.component';
 import { CreateTeamComponent } from './main/teams/create-team/create-team.component';
+import { MyTeamComponent } from './main/teams/my-team/my-team.component';
+import { GroundDashboardComponent } from './main/ground/ground-dashboard/ground-dashboard.component';
+import { MatchScoringComponent } from './main/ground/match-scoring/match-scoring.component';
+import { MatchPaymentComponent } from './main/ground/match-payment/match-payment.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     ChallengeListComponent,
-    DashboardComponent,
     HeaderComponent,
     FooterComponent,
     HeaderComponent,
@@ -28,7 +32,12 @@ import { CreateTeamComponent } from './main/teams/create-team/create-team.compon
     PageNotFoundComponent,
     TeamListComponent,
     JoinTeamComponent,
-    CreateTeamComponent
+    CreateTeamComponent,
+    LeaderbaordComponent,
+    MyTeamComponent,
+    GroundDashboardComponent,
+    MatchScoringComponent,
+    MatchPaymentComponent
   ],
   imports: [
     BrowserModule,

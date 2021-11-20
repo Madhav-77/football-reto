@@ -36,7 +36,6 @@ export class ChallengeListComponent implements OnInit {
       console.log("has jwt")
       this.authService.getUserData().subscribe(user => {
         this.user = user;
-        // console.log("User details are ===>", this.user)
       },
         err => {
           console.log(`Error in getUserData: `);
