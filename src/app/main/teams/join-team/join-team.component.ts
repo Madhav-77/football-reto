@@ -37,4 +37,16 @@ export class JoinTeamComponent implements OnInit {
       console.log(err);
     });
   }
+
+  joinTeam(teamId: any){
+    this.authService.getUserData().subscribe((data: any) => {
+      this.teamService.joinTeamAPI(teamId, data.id).subscribe((data: any) => {
+        //where to redirect
+      }, (err) => {
+        console.log(err);
+      });
+    }, (err) => {
+      console.log(err);
+    });  
+  }
 }

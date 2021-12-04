@@ -65,7 +65,7 @@ export class AuthServiceService {
 
   loginUser(loginFormObj: any) {
     let requestData = {
-      "identifier": loginFormObj.username,
+      "identifier": loginFormObj.email,
       "password": loginFormObj.password
     }
     this.isAuthenticated$.next(true);

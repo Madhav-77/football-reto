@@ -1,4 +1,5 @@
 <button [routerLink]="['create-team']" [disabled]="isTeamAssignedToUser">Create team</button>
-<a *ngFor="let team of teamsList">
-    <br>{{ team.name }}
-</a>
+<div *ngFor="let team of teamsList">
+    <span>{{ team.name }}</span>
+    <button (click)="joinTeam(team.id)">Join Team</button>
+</div>

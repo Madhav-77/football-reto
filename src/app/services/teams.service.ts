@@ -21,4 +21,12 @@ export class TeamsService {
   getTeamById(id: string) {
     return this.httpClient.get<any>(this.baseUrl + "teams/" + id);
   }
+  
+  createTeam(createTeamObj: any){
+    return this.httpClient.post(this.baseUrl + "teams", createTeamObj);
+  }
+
+  joinTeamAPI(teamId: any, userId: any){
+    return this.httpClient.put(this.baseUrl + "teams", teamId, userId);
+  }
 }
