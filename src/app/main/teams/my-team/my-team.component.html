@@ -1,0 +1,62 @@
+<div>
+  <!-- Div team name points and rank -->
+  <div *ngIf="team">
+    <p>Team: {{ team.name }}</p>
+    <p>Points: {{ team.points }}</p>
+    <!-- <p>Rank: {{team.rank}}</p> -->
+  </div>
+
+  <div *ngIf="team">
+    <button *ngIf="team.id === user.team">Create Challenge</button>
+  </div>
+
+  <!-- Team Joining Requests -->
+  <div *ngIf="team && user && team.id === user.team_owned">
+    <h2>Requests</h2>
+
+    <div *ngFor="let player_request of team.player_requests">
+      <p>
+        {{ player_request.username }}
+      </p>
+      <button>Accept Request</button>
+      <button>Reject Request</button>
+      <p>------------------------------</p>
+    </div>
+  </div>
+
+  <!-- Team Players Div -->
+  <div *ngIf="team">
+    <h2>Players</h2>
+
+    <div *ngFor="let player of team.players">
+      <p>{{ player.username }}</p>
+      <button *ngIf="user && team.id === user.team_owned">Kick</button>
+      <p>------------------------------</p>
+    </div>
+  </div>
+
+  <!-- Match History Div -->
+  <!-- TODO: 
+    1. Get challenges where winner is there & creator/acceptor => currentTeam, order by des match_date 
+    -->
+
+  <div *ngIf="matchesPlayed.length > 0">
+    <h3>Matches Played</h3>
+    <div>
+      <div style="display: flex">
+        <p>V/S</p>
+        <p>Winner</p>
+      </div>
+
+      <div style="display: flex;">
+        <p *ngIf="teamId == matchesPlayed[0].creator.id">
+          {{ matchesPlayed[0].acceptor.name }}
+        </p>
+        <p *ngIf="teamId == matchesPlayed[0].acceptor.id">
+          {{ matchesPlayed[0].creator.name }}
+        </p>
+        <p>{{ matchesPlayed[0].winner.name }}</p>
+      </div>
+    </div>
+  </div>
+</div>

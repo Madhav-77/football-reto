@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
         
         localStorage.setItem("JWT_TOKEN", data.jwt);
         localStorage.setItem("EXP_STAMP", this.jwtHelper.decodeToken(data.jwt).exp);
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/team');
       }, (err) => {
         console.log(err);
       });
